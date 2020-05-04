@@ -44,6 +44,9 @@ app.post('/like', async (req, res) => {
 })
 
 app.post('/create', upload.single('design'), async (req, res) => {
+
+    console.log(req.body)
+
     if( !req.body.file ){
         res.send({status: 400, data: "Please Create a Complete Design"})
         return 

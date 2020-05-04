@@ -40,4 +40,10 @@
 
 .header{
   font-size: 150%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header img {
+  margin: 10px;
 }

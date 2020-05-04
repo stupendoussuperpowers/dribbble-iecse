@@ -6,6 +6,7 @@ class AddDesign extends React.Component {
         super(props)
         this.state = {
             file: '',
+            fileUrl: '',
             user: {},
             message: ''
         }
@@ -16,17 +17,18 @@ class AddDesign extends React.Component {
     createDesign(){
 
         var formdata = new FormData()
+
+        console.log(this.state.file)
+       
         formdata.append('design', this.state.file)
         formdata.append('file','figure this outplease')
 
         fetch('/api/design/create', {
             method: 'post',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(formdata)
+            body: formdata
         }).then(resp => resp.json())
-        .then(data => this.setState({message: data.data}))
+        .then(data =>  this.setState({message:data.data}))
+       
     }
 
     componentDidMount(){
@@ -38,9 +40,17 @@ class AddDesign extends React.Component {
     render(){
         return (
             <div>
-                Upload File: <input type="file" onChange={(event)=> this.setState({file: event.target.files[0]})}/>
+                <div>
+                Upload File: <input type="file" onChange={(event)=> {this.setState({file: event.target.files[0]}); console.log(event.target.files[0])}}/>
+                </div>
+                <div>
                 <button onClick={this.createDesign}>Upload Your Design</button>
+                </div>
+                {/* <img src={URL.createObjectURL(this.state.file)} alt="preview"/> */}
+                <div>
                 {this.state.message}
+                </div>
+                
             </div>
         )
     }

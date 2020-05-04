@@ -16,3 +16,20 @@
     justify-items: center;
     width: 100vw;
 }
+
+.userdetails{
+    display: flex;
+    
+    justify-content: space-around;
+}
+
+.firstcol .secondcol{
+    display: flex;
+    flex-direction: row;
+}
+
+.postexplore{
+    display: flex;
+    flex-direction: column;
+    width: 1vw;
+}

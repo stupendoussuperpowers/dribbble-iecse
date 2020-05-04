@@ -51,34 +51,42 @@ class ProfilePage extends React.Component {
     render(){
         return(
             <div>
-                <div className="card">
-                    Username: {this.state.user.username}
+                <div className="title">
+                   {this.state.user.username}
                 </div>
-                <div className="">
-                    Email: {this.state.user.email}
-                </div>
+                <div className="userdetails">
+                <div className = "firstcol">
                 <div>
-                    Followers: {this.state.user.followers.length}
-                </div>
-                <div>
-                    Following: {this.state.user.following.length}
-                </div>
-                <div>
-                    Bio: {this.state.user.bio}
+                    {this.state.user.bio}
                     {
                         !this.state.biobool ?
-                        <div>
+                        
                             <button onClick = {() => this.setState({biobool: true})}> Edit Bio</button>
-                        </div>
+                        
                         :<div>
                             <input type="textfield" onChange = {(event) => this.setState({biotext: event.target.value})} />
                             <button onClick = {this.editBio} >Update Bio </button>
                         </div>
                     }
                 </div>
-                
-                Designs:
+                <div className="">
+                    {this.state.user.email}
+                </div>
+                </div>
 
+                <div className = "secondcol">
+                <div>
+                    Followers: {this.state.user.followers.length}
+                </div>
+                <div>
+                    Following: {this.state.user.following.length}
+                </div>
+                </div>
+
+                </div>
+                
+                Designs: {this.state.user.designs.length}
+                <div className="postgrid">
                 {
                     this.state.user.designs.map(value => {
                         return (
@@ -88,6 +96,7 @@ class ProfilePage extends React.Component {
                         )
                     })
                 }
+                </div>
 
             </div>
         )

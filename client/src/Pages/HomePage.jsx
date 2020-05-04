@@ -34,6 +34,7 @@ class HomePage extends React.Component {
                 <div className="title">
                    Explore Page
                 </div>
+                <div className="postexplore">
                 {
                     this.state.designList.map(
                         value => {
@@ -45,6 +46,7 @@ class HomePage extends React.Component {
                         }
                     )
                 }
+                </div>
             </div>
         )
     }

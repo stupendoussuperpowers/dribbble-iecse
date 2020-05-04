@@ -9,6 +9,9 @@ import AddDesign from './Pages/AddDesign.jsx'
 import PostPage from './Pages/PostPage'
 import OtherProfile from './Pages/OtherProfile'
 
+import dribbble from './dribbble.svg'
+import iecse from './ieces.svg'
+
 import {Link} from 'react-router-dom'
 
 class App extends React.Component {
@@ -21,17 +24,16 @@ class App extends React.Component {
     return (
       <div className="App">
         <div className = "header">
-          dribbble  x  iecse
-        </div>
-        <div>
-          <Router>
-          <Link to="/home" style={this.state.style}>Explore</Link>
-          <Link to="/myprofile" style={this.state.style}>
-          MyProfile
-          </Link>
-          </Router>
+          <img src={dribbble} width="100px"/>  <img src={iecse} width ="100px" />
         </div>
         <Router>
+        <div>
+          
+          <Link to="/home" style={this.state.style}>Explore  </Link>
+          <Link to="/myprofile" style={this.state.style}>MyProfile </Link>
+          
+        </div>
+       
           <Switch>
             <Route path="/login" exact component={LoginPage}></Route>
             <Route path="/register" exact component={RegisterPage}></Route>
