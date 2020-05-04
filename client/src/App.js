@@ -27,9 +27,10 @@ class App extends React.Component {
           <img src={dribbble} width="100px"/>  <img src={iecse} width ="100px" />
         </div>
         <Router>
-        <div>
+        <div className = "header2">
           
           <Link to="/home" style={this.state.style}>Explore  </Link>
+          <Link to="/adddesign" style={this.state.style}>Add Design</Link>
           <Link to="/myprofile" style={this.state.style}>MyProfile </Link>
           
         </div>

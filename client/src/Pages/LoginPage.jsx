@@ -38,8 +38,12 @@ class LoginPage extends React.Component {
         return(
             <div>
                 <div className="card">
+                    <div>
                     <input type="text" onChange = {(event) => this.setState({username: event.target.value})}/>
+                    </div>
+                    <div>
                     <input type="password" onChange = {(event) => this.setState({password: event.target.value})}/>
+                    </div>
                     <button onClick = {this.logIn}>Login</button>
                     {this.state.username} {this.state.password}
                 </div>

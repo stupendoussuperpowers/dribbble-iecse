@@ -42,12 +42,18 @@ class RegisterPage extends React.Component {
     render(){
         return (
             <div>
-                WHY WONT ANYTHING LOAD
-                
+                <div>
                     <input placeholder= "username" type="text" onChange = {(event) => this.setState({username: event.target.value})}/>
+                </div>    
+                <div>
                     <input placeholder= "email" type="text" onChange = {(event) => this.setState({email: event.target.value})}/>
+                </div>
+                <div>
                     <input placeholder = "password" type="password" onChange = {(event) => this.setState({password: event.target.value})}/>
+                </div>
+                <div>
                     <input placeholder = "confirm password" type="password" onChange = {(event) => this.setState({password2: event.target.value})}/>
+                </div>
                     <button onClick = {this.register}>Register</button>
                
             </div>

@@ -45,6 +45,7 @@ class ProfilePage extends React.Component {
         }).then(resp => resp.json())
         .then(data => {
             console.log(data)
+            this.setState({biobool: false})
         })
     }
 

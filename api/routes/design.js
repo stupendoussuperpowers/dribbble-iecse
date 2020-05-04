@@ -7,7 +7,7 @@ const users = require('../models/user')
 
 app.get('/explore', async (req, res) => {
     
-    const designList = await designs.find({}, '_id design_url author liked_by').limit(10)
+    const designList = await designs.find({}).limit(10)
 
     return res.send({status:200, data:designList})
 })

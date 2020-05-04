@@ -44,6 +44,12 @@
   justify-content: space-between;
 }
 
+.header2{
+  font-size: 150%;
+  display: flex;
+  justify-content: space-around;
+}
+
 .header img {
   margin: 10px;
 }

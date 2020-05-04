@@ -9,18 +9,37 @@ class PostPage extends React.Component {
 
         this.state = {
             postID: this.props.postID,
-            post: {}
+            post: {
+                comments: [],
+                liked_by: []
+            },
+            commentBody: ''
         }
+        this.postComment = this.postComment.bind(this)
+    }
 
+    postComment(){
+        fetch('/api/comment/add', {
+            method: 'post',
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body: JSON.stringify({
+                parent: this.state.postID,
+                content: this.state.commentBody
+            })
+        }).then(resp => resp.json())
+        .then(data => {
+            console.log(data)
+            this.setState({commentBody: ''}, ()=>{})
+        })
     }
 
     componentDidMount(){
 
-        console.log(this.state)
-
         fetch(`/api/design/${this.state.postID}`)
         .then(resp => resp.json())
-        .then(data => this.setState({post: data.data}))
+        .then(data => this.setState({post: data.data}, () => console.log(this.state)))
     }
 
     render(){
@@ -33,8 +52,24 @@ class PostPage extends React.Component {
                         {this.state.post.author}
                         </div>
                         <div>
-                            {this.state.post.likes} likes  
+                            {this.state.post.liked_by.length} likes  
                         </div>
+                    </div>
+                    Comments:
+                    <div>
+                        <input type="text" onChange={(event) => this.setState({commentBody: event.target.value})}/>
+                        <button onClick={this.postComment}>Comment</button>
+                    </div>
+                    <div>
+                        {
+                            this.state.post.comments.map(value => {
+                                return (
+                                    <div key = {value._id}>
+                                        {value.author} : {value.content}
+                                    </div>
+                                )
+                            })
+                        }
                     </div>
                 </div>
             </div>

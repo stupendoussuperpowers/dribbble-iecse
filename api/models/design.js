@@ -11,6 +11,9 @@ const designSchema = mongoose.Schema({
     },
     liked_by: {
         type: Array
+    },
+    comments: {
+        type: Array
     }
 })
 
