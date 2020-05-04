@@ -29,7 +29,7 @@
 }
 
 .postexplore{
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, 425px);
     width: 1vw;
 }

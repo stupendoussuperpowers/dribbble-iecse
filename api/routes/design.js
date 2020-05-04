@@ -32,6 +32,13 @@ app.post('/like', async (req, res) => {
     
     const post = postList[0]
 
+    for(var user in post.liked_by){
+        console.log(user);
+        if(post.liked_by[user] === req.user.username){
+            return res.send({status:400, data:"Aleady liked this image"})
+        }
+    }
+
     try{
         console.log("The user is:", req.user)
         post.liked_by.push(req.user.username)

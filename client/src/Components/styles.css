@@ -8,7 +8,7 @@
 
 #card{
     border: 2px solid black;
-    width: 450px;
+    width: 350px;
     margin: 5px;
     align-content: baseline;
 }
@@ -20,4 +20,9 @@
 
 .likedby{
     margin: 5px;
+}
+
+button {
+    background: transparent;
+    border: none;
 }

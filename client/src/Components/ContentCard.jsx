@@ -38,14 +38,13 @@ class ContentCard extends React.Component{
     render(){
         return (
             <div id = "card">
-                <div><img alt = "design" className = "image" src = {this.state.image}/></div>
+                <div><img alt = "design" className = "image" src = {this.state.image} onClick={this.redirectToPost} /></div>
         
                 <div className="details">
-                    <div className="username">{this.state.username}</div>
+                    <div className="username" onClick={() => this.props.history.push(`/profile/${this.state.username}`)} >{this.state.username}</div>
                     <div className="likedby">likes: {this.state.likes.length}</div>
                     <button onClick={this.likePost}>like</button>
                 </div>
-                <button onClick = {() => this.redirectToPost()}>View Post</button>
             </div>
         )
     }

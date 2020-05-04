@@ -47,26 +47,34 @@ class OtherProfile extends React.Component {
     render(){
         return(
             <div>
-                <div className="card">
-                    Username: {this.state.user.username}
+                <div className="title">
+                   {this.state.user.username}
                 </div>
-                <div className="">
-                    Email: {this.state.user.email}
+
+                <div className="userdetails">
+                <div className = "firstcol">
+                    <div>
+                        {this.state.user.bio}
+                    </div>
+                    <div className="">
+                        {this.state.user.email}
+                    </div>
+                    <div>
+                        <button onClick={this.followUser}>Follow</button>
+                    </div>
                 </div>
+
+                <div className = "secondcol">
                 <div>
                     Followers: {this.state.user.followers.length}
                 </div>
                 <div>
                     Following: {this.state.user.following.length}
                 </div>
-                <div>
-                    Bio: {this.state.user.bio}
                 </div>
                 
-                <div>
-                    <button onClick={this.followUser}>Follow</button>
                 </div>
-
+                
                 Designs: {this.state.user.designs.length}
 
                 {

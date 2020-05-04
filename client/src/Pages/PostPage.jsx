@@ -64,7 +64,7 @@ class PostPage extends React.Component {
                         {
                             this.state.post.comments.map(value => {
                                 return (
-                                    <div key = {value._id}>
+                                    <div key = {value._id} onClick={() => this.props.history.push(`/profile/${value.author}`)}>
                                         {value.author} : {value.content}
                                     </div>
                                 )

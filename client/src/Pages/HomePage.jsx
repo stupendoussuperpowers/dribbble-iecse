@@ -39,7 +39,7 @@ class HomePage extends React.Component {
                     this.state.designList.map(
                         value => {
                             return (
-                                <div>
+                                <div key = {value._id}>
                                     <ContentCard postID = {value._id} image={value.design_url} username={value.author} likes={value.liked_by}  />
                                 </div>
                             )
