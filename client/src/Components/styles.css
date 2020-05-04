@@ -1,0 +1,23 @@
+.username{
+    margin: 5px;
+}
+
+.image{
+    width: 450px;
+}
+
+#card{
+    border: 2px solid black;
+    width: 450px;
+    margin: 5px;
+    align-content: baseline;
+}
+
+.details {
+    display: flex;
+    font-size: 120%;
+}
+
+.likedby{
+    margin: 5px;
+}
