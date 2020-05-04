@@ -1,9 +1,14 @@
 const users = require('../models/user')
 
+const bcrypt = require('bcryptjs')
+
 const app = require('express').Router()
 
-function makePass(pass){
-    return pass
+async function makePass(pass){
+    var salt = await bcrypt.genSaltSync(10)
+    var ret = await bcrypt.hashSync(pass, salt)
+
+    return ret;
 }
 
 function makeId(){
@@ -32,15 +37,17 @@ app.post('/login', async (req, res) => {
 
     const userList = await users.find({username: req.body.username})
 
-    console.log(userList);
-
     const user = userList[0]
 
-    if(user.password == req.body.password){
+    var authStat = await bcrypt.compareSync(req.body.password, user.password )
+
+    if(authStat){
         req.logIn({username:req.body.username}, (err) => {
             if(err) return res.send({status: 400, data: "Invalid Credentials"})
             else return res.send({status:200, data: "Logged in"})
         })
+    } else{
+        return res.send({status:400, data:"Invalid Credentials"})
     }
 
 })
@@ -70,11 +77,13 @@ app.post('/register', async (req, res) => {
         return 
     }
 
+    var pass = await makePass(pass1)
+
     users.create({
         username: username,
         id: makeId(),
         email: req.body.email, 
-        password: makePass(pass1),
+        password: pass,
         designs: [], 
         bio: '',
         following: [],
