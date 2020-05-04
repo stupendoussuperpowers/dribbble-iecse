@@ -5,6 +5,46 @@ const upload = require('./uploadaws')
 const designs = require('../models/design').designs
 const users = require('../models/user')
 
+
+app.post('/save', async (req, res) => {
+    const userList = await users.find({"username":req.user.username})
+    const currUser = userList[0]
+
+    var saved = await designs.find({"id": req.body.postID})
+
+    var newSaved = saved[0]
+
+    console.log("NewSaved", newSaved)
+
+    var doc;
+
+    try{
+        console.log(currUser.saved)
+        for(var post in currUser.saved){
+            if(currUser.saved[post].id == req.params.postID){
+                return res.send({status:400, data:"Already Saved"})
+            }
+        }
+
+        currUser.saved.push(newSaved)
+        currUser.save()
+    }catch(e){
+        console.log(e)
+        return res.send({status:500,data: e })
+    }
+
+    return res.send({status:200, data: "Saved"})
+
+})
+
+app.get('/saved', async (req, res) => {
+    const currUser = await users.find({"username":req.user.username}, 'saved')
+    const savedList = currUser[0]
+
+    return res.send({status:200, data:savedList})
+
+})
+
 app.get('/explore', async (req, res) => {
     
     const designList = await designs.find({}).limit(10)

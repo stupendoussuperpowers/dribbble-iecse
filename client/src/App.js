@@ -9,6 +9,8 @@ import AddDesign from './Pages/AddDesign.jsx'
 import PostPage from './Pages/PostPage'
 import OtherProfile from './Pages/OtherProfile'
 
+import Saved from './Pages/Saved'
+
 import FollowersPage from './Pages/FollowersPage'
 import FollowingPage from './Pages/FollowingPage'
 
@@ -34,6 +36,7 @@ class App extends React.Component {
           
           <Link to="/home" style={this.state.style}>Explore  </Link>
           <Link to="/adddesign" style={this.state.style}>Add Design</Link>
+          <Link to="/saved" style={this.state.style}>Saved</Link>
           <Link to="/myprofile" style={this.state.style}>MyProfile </Link>
           
         </div>
@@ -43,6 +46,7 @@ class App extends React.Component {
             <Route path="/register" exact component={RegisterPage}></Route>
             <Route path="/home" exact component={HomePage}></Route>
             <Route path="/myprofile" exact component={ProfilePage}></Route>
+            <Route path="/saved" exact component={Saved}></Route>
             <Route path="/profile/:userID" component={ ({match, userID}) => <OtherProfile userID={match.params.userID} /> }></Route>
             <Route path="/adddesign" exact component={AddDesign}></Route>
             <Route path="/followers/:id" component={({match, id}) => <FollowersPage userID={match.params.id}/>}  ></Route>

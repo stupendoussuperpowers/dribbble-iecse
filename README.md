@@ -1,11 +1,21 @@
 # dribbble-iecse
 Dribbble for IECSE
 
+Mongo Express React Node (Redis, Passport)
+
 Progress so far:
- - Backend for Auth, S3, bio, liking, following 
- - Frontend (no design) for reg, login, upload (no preview), like, follow
+ - Auth, S3, Like, Follow (display features left), Save, Comment, Dev Docker
 
 Things left:
- - Bonus Tasks lmao
- - Make CSS maybe
  - Protect routes on frontend better
+ - Edge Cases for API Requests
+
+
+How to run:
+
+```./Taskfile.sh```
+
+Mongo CLI
+
+```./Taskfile.sh dbshell```
+

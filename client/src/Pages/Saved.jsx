@@ -4,7 +4,7 @@ import {withRouter} from 'react-router-dom'
 
 import './styles.css'
 
-class HomePage extends React.Component {
+class Saved extends React.Component {
     constructor(props){
         super(props)
         this.state = {
@@ -14,26 +14,19 @@ class HomePage extends React.Component {
     }
 
     componentDidMount(){
-        fetch('/api/design/explore')
+        fetch('/api/design/saved')
         .then(resp => resp.json())
         .then(data => {
-            console.log(data.data)
-            this.setState({designList: data.data})
+            console.log(data)
+            this.setState({designList: data.data.saved})
         })
-
-        fetch('/api/auth/curruser')
-        .then(resp => resp.json())
-        .then(data => {
-            this.setState({username: data.data})
-        })
-
     }
 
     render(){
         return(
             <div>
                 <div className="title">
-                   Explore Page
+                   Saved
                 </div>
                 <div className="postexplore">
                 {
@@ -54,4 +47,4 @@ class HomePage extends React.Component {
 
 }
 
-export default withRouter(HomePage)
+export default withRouter(Saved)

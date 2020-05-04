@@ -27,6 +27,9 @@ const userSchema = new mongoose.Schema({
     },
     designs: {
         type: [designSchema],
+    },
+    saved: {
+        type: [designSchema]
     }
 })
 
