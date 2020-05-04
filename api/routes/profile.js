@@ -2,7 +2,22 @@ const app = require('express').Router()
 
 const users = require('../models/user')
 
+app.get('/withid/:id', async (req, res)=> {
+    var id = req.params["id"]
+
+    console.log(id)
+
+    const user = await users.findById( req.params.id, '_id username designs followers following email')
+    //const user = userList[0]
+
+    //console.log("Users are:", userList)
+
+    res.send({status:200, data: user})
+})
+
 app.get('/:id', async (req, res) => {
+
+
     var username = req.params["id"]
 
     console.log("The user id is", username)
@@ -42,6 +57,12 @@ app.post('/follow', async (req, res) => {
         const userFollower = userList[0]
         const messiahList = await users.find({username: req.body.messiah})
         const messiah = messiahList[0]
+
+        for(var user in messiah.followers){
+            if(messiah.followers[user] == userFollower._id){
+                return res.send({status:400, data:"Already Following"})
+            }
+        }
         
         userFollower.following.push(messiah._id)
         

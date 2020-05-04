@@ -9,6 +9,9 @@ import AddDesign from './Pages/AddDesign.jsx'
 import PostPage from './Pages/PostPage'
 import OtherProfile from './Pages/OtherProfile'
 
+import FollowersPage from './Pages/FollowersPage'
+import FollowingPage from './Pages/FollowingPage'
+
 import dribbble from './dribbble.svg'
 import iecse from './ieces.svg'
 
@@ -42,6 +45,8 @@ class App extends React.Component {
             <Route path="/myprofile" exact component={ProfilePage}></Route>
             <Route path="/profile/:userID" component={ ({match, userID}) => <OtherProfile userID={match.params.userID} /> }></Route>
             <Route path="/adddesign" exact component={AddDesign}></Route>
+            <Route path="/followers/:id" component={({match, id}) => <FollowersPage userID={match.params.id}/>}  ></Route>
+            <Route path="/following/:id" component={({match, id}) => <FollowingPage userID={match.params.id}/>}  ></Route>
             <Route path="/post/:postID"  component={ ({match, postID}) => <PostPage postID={match.params.postID}/>}></Route>
           </Switch>
         </Router>
