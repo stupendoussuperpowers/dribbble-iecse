@@ -11,6 +11,7 @@ Things left:
  - Edge Cases for API Requests (remaining ones)
  - CSS / Designing
  - On Second 5 AM thoughts, schemas might be redundant wrt designs and users 
+ - better S3 config maybe send blob from node instead of direct URLs. Depends on security (currently all designs are stored with public access)
 
 How to run:
 
